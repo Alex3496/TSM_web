@@ -1,0 +1,683 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+:root {
+    --cyan-light: #2DDA93;
+    --cyan: #65CCCC;
+    --cyan-dark: #16838F;
+    --cyan-semi-dark: #D12B00;
+    --card-back: rgba(255, 255, 255, 1);
+    --top: #eafcee;
+    /* Color top gradient*/
+    --bottom: #cfe8eb;
+    /* Color bottom gradient*/
+    --green-dark: #31A078;
+}
+
+html,
+body {
+    // font-family: 'Cera Pro', Arial, Helvetica, sans-serif !important;
+    font-weight: normal;
+}
+
+.layout-login {
+    min-height: 100vh;
+    background: linear-gradient(var(--top), var(--bottom)) !important;
+}
+
+.layout-content {
+    padding: 0 24px 24px;
+}
+
+.content-main{
+    
+    padding: 24px;
+    margin: 0;
+    min-height: 80vh;
+    background-color: white;
+    border-radius: 8px;
+    
+}
+
+.text-wrap {
+    white-space: pre-wrap;
+    overflow-y: hidden;
+    text-overflow: ellipsis;
+}
+
+.text-cyan-light {
+    color: var(--cyan-light) !important;
+}
+
+.text-cyan {
+    color: var(--cyan) !important;
+}
+
+.text-cyan-dark {
+    color: var(--cyan-dark) !important
+}
+
+.text-cyan-semi-dark {
+    color: var(--cyan-semi-dark) !important;
+}
+
+.text-green {
+    color: var(--green-dark) !important
+}
+
+.hover {
+    cursor: pointer;
+}
+
+
+.hm-layout-content {
+    padding: 1.5rem !important;
+    background: transparent;
+    overflow-x: hidden;
+    min-height: 100vh !important;
+}
+
+.admin-page-header {
+    background-color: #fccb52 !important;
+}
+
+.admin-page-header .ant-page-header-heading-title {
+    color: white;
+}
+
+/* HEADER */
+.site-page-header {
+    min-height: 50px;
+    padding: 0.5rem 1.5rem;
+    border-radius: 10px;
+    font-size: 26px !important;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.5) !important;
+    border: 1px solid #FFFFFF !important;
+    margin-bottom: 1rem !important;
+}
+
+
+/*
+ * @component Listas para el despliege de registros generales
+ * @description Quita el border inferior de los elementos de la lista
+ */
+.component-list {
+    overflow-x: auto;
+}
+
+.component-list .ant-list-header,
+.component-list .ant-list-items {
+    //min-width: 1000px;
+}
+
+.component-list .ant-list-header,
+.component-list .component-list-item {
+    border: none !important;
+}
+
+.component-list .ant-list-header .border-header-list {
+    border-bottom: 1px solid var(--cyan-semi-dark);
+}
+
+.component-list .component-list-item.component-list-item-red .ant-card-body {
+    border: 1px solid #ff4d4f !important
+}
+
+
+/*
+ * @component Listas para el despliege de registros generales
+ * @description pequeño linea de color que se encuentra en el lado izquierdo en cada elemento de la lista
+ */
+.component-list .card-list .badge-card-bxnk{
+    width: 8px;
+    height: 60% !important;
+    position: absolute;
+    left: -2px;
+    border-radius: 2px;
+    background: #bdfe00;
+}
+
+
+/*
+ * @component Listas para el despliege de registros generales
+ * @description pone la paginacion integradada a la lista del lado izquierdo
+ */
+
+.component-list .ant-list-pagination {
+    text-align: left;
+    margin-bottom: 5rem;
+}
+
+.component-list.component-list-group .ant-list-pagination {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+/*
+ * @component Listas para el despliege de registros generales
+ * @description Quita padding superior del los elementos, para que no queden tan separados
+ */
+
+.component-list .component-list-item {
+    padding: 6px 0px !important;
+}
+
+.component-list .component-list-item .ant-typography {
+    line-height: 2rem;
+}
+
+.component-list .component-list-item-red .ant-typography {
+    line-height: 2rem;
+    color: #ff4d4f;
+}
+
+/*
+ * @component Listas para el despliege de registros generales
+ * @description Creae efecto de hover
+ */
+
+.component-list-item .hover:hover {
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/*
+ * @component Listas para el despliege de registros generales
+ * @description Los cards dento de la lista tomen todo el ancho 
+ */
+
+.component-list .card-list {
+    width: 100%;
+    background: var(--card-back);
+}
+
+/*
+ * @component Listas para el despliege de registros generales
+ * @description Da mas espacion interior a los cards de las lista
+ */
+
+.component-list .card-list .ant-card-body {
+    padding: 13px;
+    position: relative;
+}
+
+.component-list.scroll .ant-list-header,
+.component-list.scroll .ant-list-items {
+    min-width: 1000px;
+}
+
+.component-list .ant-list-items .ant-typography {
+    max-height: 32px;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/*-----------------------------------CLASES GLOBALES----------------------------------------*/
+
+.border {
+    border: solid 1px red;
+}
+.border-radius-10{
+    border-radius: 10px;
+}
+
+.no-border {
+    border: none !important;
+}
+
+.no-strong {
+    font-weight: 300 !important;
+}
+
+.center {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+    .md-center {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .md-flex-left {
+        display: flex !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+    }
+}
+
+.block-center {
+    display: block;
+    margin: auto;
+}
+
+.block {
+    display: block;
+}
+
+.flex {
+    display: flex;
+}
+
+.grid {
+    display: grid;
+}
+
+.flex-column {
+    display: flex !important;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.flex-left {
+    display: flex !important;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.flex-left-column {
+    display: flex !important;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.flex-right {
+    display: flex !important;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.flex-column-between {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.flex-column-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.flex-left-column-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.flex-left-column-around {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.flex-between {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+.flex-around {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.float-left {
+    float: left;
+}
+
+.heigth-100 {
+    height: 100% !important;
+}
+
+.p-0 {
+    padding: 0 !important;
+}
+
+.pd-1 {
+    padding: 1rem !important;
+}
+
+.pd-2 {
+    padding: 2rem !important;
+}
+
+.pd-3 {
+    padding: 3rem !important;
+}
+
+.pt-1 {
+    padding-top: 1rem !important;
+}
+
+.pt-05 {
+    padding-top: 0.5rem !important;
+}
+
+.pt-2 {
+    padding-top: 2rem !important;
+}
+
+.pt-3 {
+    padding-top: 3rem !important;
+}
+
+.pt-4 {
+    padding-top: 4rem !important;
+}
+
+.pl-05 {
+    padding-left: .5rem !important;
+}
+
+.pl-1 {
+    padding-left: 1rem !important;
+}
+
+.pl-2 {
+    padding-left: 2rem !important;
+}
+
+.pl-3 {
+    padding-left: 3rem !important;
+}
+
+.pr-05 {
+    padding-right: .5rem !important;
+}
+
+.pr-1 {
+    padding-right: 1rem !important;
+}
+
+.pr-2 {
+    padding-right: 2rem !important;
+}
+
+.pb-1 {
+    padding-bottom: 1rem !important;
+}
+
+.pb-2 {
+    padding-bottom: 2rem !important;
+}
+
+.pb-3 {
+    padding-bottom: 3rem !important;
+}
+
+.pb-4 {
+    padding-bottom: 4rem !important;
+}
+
+
+.pr-3 {
+    padding-right: 3rem !important;
+}
+
+.m-0 {
+    margin: 0 !important;
+}
+
+.ml-1 {
+    margin-left: 1rem !important;
+}
+
+.ml-2 {
+    margin-left: 2rem !important;
+}
+
+.ml-3 {
+    margin-left: 3rem !important;
+}
+
+.mt-05 {
+    margin-top: 0.5rem !important;
+}
+
+.mt-1 {
+    margin-top: 1rem !important;
+}
+
+.mt-2 {
+    margin-top: 2rem !important;
+}
+
+.mt-3 {
+    margin-top: 3rem !important;
+}
+
+.mt-4 {
+    margin-top: 4rem !important;
+}
+
+.mt-5 {
+    margin-top: 5rem !important;
+}
+
+.mb-05 {
+    margin-bottom: 0.5rem !important;
+}
+
+.mb-1 {
+    margin-bottom: 1rem !important;
+}
+
+.mb-2 {
+    margin-bottom: 2rem !important;
+}
+
+.mb-3 {
+    margin-bottom: 3rem !important;
+}
+
+.mr-05 {
+    margin-right: 0.5rem !important;
+}
+
+.mr-1 {
+    margin-right: 1rem !important;
+}
+
+.mr-2 {
+    margin-right: 2rem !important;
+}
+
+.text-wrap {
+    white-space: normal !important;
+}
+
+.text-center,
+.text-center .ant-form-item-label {
+    text-align: center !important;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right * {
+    text-align: right !important;
+}
+
+.text-white {
+    color: #FFF !important;
+}
+
+.text-gray {
+    color: #858997 !important;
+}
+
+.text-gray-dark {
+    color: #222222 !important;
+}
+
+.text-purple {
+    color: #9D61F4 !important;
+}
+
+.font-18 {
+    font-size: 18px !important;
+}
+
+.font-12,
+.font-12 * {
+    font-size: 12px !important;
+}
+
+.font-13,
+.font-13 * {
+    font-size: 13px !important;
+}
+
+.font-16 {
+    font-size: 16px !important;
+}
+
+.font-24 {
+    font-size: 24px !important;
+}
+
+.font-28 {
+    font-size: 28px !important;
+}
+
+.width-100,
+.width-100 .ant-upload {
+    width: 100% !important;
+}
+
+
+.width-95 {
+    width: 95%;
+}
+
+.bg-white {
+    background: #FFFFFF;
+}
+
+.disabled-link {
+    pointer-events: none;
+}
+
+
+
+
+/*Overriding Ant Design Styles*/
+.ant-card {
+    border-radius: 10px;
+    border: none;
+}
+
+/**
+@description Le quitamos la linea de los cards,  la que divide.
+*/
+
+.ant-card-head {
+    border-bottom: none !important;
+    border: none;
+}
+
+
+.heigth-100 {
+    height: 100%;
+}
+
+
+$blue: #0047FF;
+$purple: #722ed1;
+$cyan: #13c2c2;
+$green: #52c41a;
+$magenta: #eb2f96;
+$pink: #eb2f96;
+$red: #f5222d;
+$orange: #fa8c16;
+$yellow: #fadb14;
+$volcano: #fa541c;
+$geekblue: #2f54eb;
+$lime: #a0d911;
+$gold: #faad14;
+
+
+$buttonColors: (
+    "blue": #0047FF,
+    "purple": #722ed1,
+    "cyan": #13c2c2,
+    "green": #65CCCC,
+    "magenta": #eb2f96,
+    "pink": #eb2f96,
+    "red": #f5222d,
+    "orange": #fa8c16,
+    "yellow": #fadb14,
+    "volcano": #fa541c,
+    "geekblue": #2f54eb,
+    "lime": #a0d911,
+    "gold": #faad14,
+    "gray": #979797,
+    "white": white
+);
+
+@each $name,
+$color in $buttonColors {
+
+    .text-#{$name} {
+        color: $color;
+    }
+
+    .ant-btn-#{$name} {
+        border-color: $color !important;
+        background: $color !important;
+
+        &:hover,
+        &:focus {
+            border-color: rgba($color, .6) !important;
+            background: rgba($color, .6) !important;
+        }
+
+        &:active {
+            border-color: rgba($color, .6) !important;
+            background: rgba($color, .6) !important;
+        }
+    }
+
+
+
+    .ant-btn-ghost-#{$name} {
+        border-color: $color;
+        background: transparent;
+        color: $color;
+
+        &:hover,
+        &:focus {
+            border-color: rgba($color, .6);
+            color: rgba($color, .6);
+            background: transparent;
+        }
+
+        &:active {
+            border-color: rgba($color, .6);
+            color: rgba($color, .6);
+            background: transparent;
+        }
+    }
+
+}
+
+
+
+
+
+
+// @preset-colors: pink, magenta, red, volcano, orange, yellow, gold, cyan, lime, green, blue,
