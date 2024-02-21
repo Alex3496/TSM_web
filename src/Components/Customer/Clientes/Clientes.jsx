@@ -65,18 +65,23 @@ class Clientes extends React.Component{
 	render(){
 
 		const columns = [
-			 {
+			{
 			    title: 'Name',
 			    dataIndex: 'nombre',
 			    key: 'nombre',
 			    render: (text, record) => (
 			     	<Text>{record.nombre} {record.apellidos}</Text>
 			    ),
-			 },
+			},
   			{
     			title: 'Email',
     			dataIndex: 'email',
     			key: 'email',
+  			},
+  			{
+    			title: 'Phone',
+    			dataIndex: 'telefono',
+    			key: 'telefono',
   			},
 		];
 
@@ -102,7 +107,18 @@ class Clientes extends React.Component{
 					</Col>
 				</Row>
 				<Content className="content-main">
-					<Table dataSource={this.state.clientes.data} columns={columns} />
+					<Table 
+						dataSource={this.state.clientes.data} 
+						columns={columns}
+						rowClassName="hover"
+						onRow={(record, rowIndex) => {
+						    return {
+						      	onClick: (event) => {
+						      		this.props.navigate('/customer/customers/edit/'+record._id)
+						      	},
+						    };
+						}}
+					/>
 				</Content>
 			</Layout>
 		)
