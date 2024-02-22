@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
-import { Route, Routes, useNavigate } from "react-router-dom";
 import { Layout } from 'antd';
+import axios from "axios";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 //COMPONENTES
 import Sidebar from "../../Components/Customer/Sidebar";
@@ -27,7 +28,7 @@ class CustomerRoutes extends React.Component {
 	}
 
 	componentDidMount() {
-		
+		axios.defaults.headers.common['Authorization'] = sessionStorage.getItem('token');
 	}
 
 	render() {

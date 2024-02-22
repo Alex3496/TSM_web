@@ -1,14 +1,31 @@
 import { useState } from 'react'
+import { Row, Col, Form, Input, Button, Checkbox, Spin, message } from "antd";
+
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Row, Col, Form, Input, Button, Checkbox } from "antd";
 
 function App() {
 
 	const navigate = useNavigate()
 
+	/**
+	 * @function onFinish
+	 * @description Realia la peticion para iniciar sesion con las credenciales adecuadas
+	 * */
 	const onFinish = (values) => {
-		console.log(values)
-		navigate('/customer')
+		axios.post('/login',{
+			...values
+		}).then(({data, headers}) => {
+			console.log(data)
+			sessionStorage.setItem('token', headers.authorization);
+			axios.defaults.headers.common['Authorization'] =  headers.authorization;
+			navigate('/customer')
+
+		}).catch(error => {
+			console.log(error?.response?.data)
+			message.error(error?.response?.data?.message ?? "Error al logear")
+		})
+
 	}
 
 
@@ -22,7 +39,8 @@ function App() {
 						layout="vertical"
 						onFinish={onFinish}
 						style={{
-							maxWidth: 600,
+							width: "100%",
+							maxWidth: 400,
 						}}
 						initialValues={{
 							remember: true,

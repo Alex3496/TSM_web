@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-import { Breadcrumb, Layout, Table, Row, Col, Button, Typography } from 'antd';
+import { Breadcrumb, Layout, Table, Row, Col, Button, Typography, message } from 'antd';
 
 const {  Content } = Layout;
 const { Text } = Typography;
@@ -56,7 +56,7 @@ class Clientes extends React.Component{
 			})
 		}).catch(error => {
 			console.log(error)
-			message.error("Error creating client")
+			message.error(error?.response?.data?.message ?? "Error getting clients")
 		}).finally(()=>{
 			this.setState({loading: false})
 		})
@@ -95,9 +95,12 @@ class Clientes extends React.Component{
 							style={{
 								margin: '16px 0',
 							}}
-						>
-							<Breadcrumb.Item>Customers</Breadcrumb.Item>
-						</Breadcrumb>
+							items={[
+								{
+									title: 'Customers',
+								}
+							]}
+						/>
 					</Col>
 					<Col span={12} className="flex-right">
 						<Button 
