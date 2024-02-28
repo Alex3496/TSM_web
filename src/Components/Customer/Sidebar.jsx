@@ -32,6 +32,7 @@ const App = () => {
 						key: "locations",
 						icon: <UserOutlined/>,
 						label: "Locations",
+						onClick: () => { navigate('/customer/locations') }
 					},
 					{
 						key: "trailers",

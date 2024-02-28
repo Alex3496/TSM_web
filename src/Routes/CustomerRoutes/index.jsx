@@ -8,7 +8,8 @@ import Sidebar from "../../Components/Customer/Sidebar";
 import Header from "../../Components/Customer/Header/header";
 
 //Rutas
-import RouterClientes from "./RouterClientes"
+import RouterClientes from "./RouterClientes";
+import RouterLocations from "./RouterLocations";
 
 
 
@@ -41,6 +42,7 @@ class CustomerRoutes extends React.Component {
 					<Content style={{ minHeight: 'calc(100vh - 100px)' }}>
 		                <Routes>
 		                 	<Route path='/customers/*'         element={<RouterClientes/>} />
+		                 	<Route path='/locations/*'         element={<RouterLocations/>} />
 		                </Routes>
 		             </Content>
 				</Layout>

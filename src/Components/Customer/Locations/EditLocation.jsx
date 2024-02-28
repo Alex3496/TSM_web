@@ -2,9 +2,10 @@ import React from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 import { Breadcrumb, Layout, Card, Row, Col, Button, Typography, Form, Input, Divider, Space, Select, Switch, Popconfirm, message } from 'antd';
 import axios from "axios";
+import dayjs from "dayjs";
 
 //componentes
-import FormCliente from "./layouts/formCliente"
+import FormLocation from "./layouts/FormLocation"
 import SelectEstados from "../../Widget/Input/SelectEstados"
 
 const {  Content } = Layout;
@@ -13,10 +14,10 @@ const { Title, Text } = Typography;
 /**
  * 
  * @export
- * @function Clientes
- * @description Vista principal de clientes
+ * @function EditLocation
+ * @description Vista principal para editar una ubicacion
  */
-class Clientes extends React.Component{
+class EditLocation extends React.Component{
 
 	constructor(props){
 		super(props);
@@ -29,8 +30,8 @@ class Clientes extends React.Component{
 	fomrRef = React.createRef();
 
 	componentDidMount(){
-		if(this.props.params?.cliente_id){
-			this.getCliente()
+		if(this.props.params?.location_id){
+			this.getLocation()
 		}
 	}
 
@@ -40,8 +41,8 @@ class Clientes extends React.Component{
 	 * @description Se ejecuta al hacer submit al formulario  
 	 * */
 	onFinish = (values) => {
-		if(this.props.params?.cliente_id){
-			this.updateCliente(values)
+		if(this.props.params?.location_id){
+			this.updateLocation(values)
 		}
 	}
 
@@ -63,26 +64,27 @@ class Clientes extends React.Component{
 	 * @method onfinish
 	 * @description Se ejecuta al hacer submit al formulario  
 	 * */
-	getCliente = () => {
+	getLocation = () => {
 		this.setState({ loading: true })
-		axios.get('/clientes/'+this.props.params.cliente_id)
+		axios.get('/locations/'+this.props.params.location_id)
 		.then(response => {
 			console.log("response", response.data);
-			let cliente = response.data;
+			let location = response.data;
 
-			this.setState({pais_id: cliente?.pais_id?._id})
+			this.setState({pais_id: location?.pais_id?._id})
 
 			this.fomrRef.current.setFieldsValue({
-				...cliente,
-				pais_id: cliente?.pais_id ? {
-					value: cliente?.pais_id._id,
-					label: cliente?.pais_id?.nombre
+				...location,
+				horario:location.horario.length > 0 ? [dayjs(location.horario[0]),dayjs(location.horario[1])] : [],
+				pais_id: location?.pais_id ? {
+					value: location?.pais_id._id,
+					label: location?.pais_id?.nombre
 				} : null,
-				estado_id: cliente?.estado_id?._id,
+				estado_id: location?.estado_id?._id,
 			})
 		}).catch(error => {
 			console.log(error)
-			message.error("Error obtaining customer information")
+			message.error("Error obtaining location information")
 		}).finally(()=>{
 			this.setState({loading: false})
 		})
@@ -93,14 +95,14 @@ class Clientes extends React.Component{
 	 * @method onfinish
 	 * @description Actualiza la informacion de un cliente
 	 * */
-	updateCliente = (values) => {
+	updateLocation = (values) => {
 		this.setState({ loading: true })
-		axios.put('/clientes',{
+		axios.put('/locations',{
 			...values,
-			cliente_id: this.props.params.cliente_id
+			location_id: this.props.params.location_id
 		}).then(response => {
 			message.success("Updated customer")
-			this.props.navigate("/customer/customers")
+			this.props.navigate("/customer/locations")
 		}).catch(error => {
 			console.log(error)
 			message.error("Error updating client")
@@ -122,14 +124,14 @@ class Clientes extends React.Component{
 								margin: '16px 0',
 							}}
 						>
-							<Breadcrumb.Item>Customers</Breadcrumb.Item>
-							<Breadcrumb.Item>Edit Customer</Breadcrumb.Item>
+							<Breadcrumb.Item>Locations</Breadcrumb.Item>
+							<Breadcrumb.Item>Edit Location</Breadcrumb.Item>
 						</Breadcrumb>
 					</Col>
 					<Col span={12} className="flex-right">
 						<Space>
-							<Button onClick={()=>this.props.navigate("/customer/customers")}>Cancelar</Button>
-							<Button onClick={()=>this.submit()}>Guardar</Button>
+							<Button onClick={()=>this.props.navigate("/customer/locations")}>Cancel</Button>
+							<Button onClick={()=>this.submit()} type="primary">Update</Button>
 						</Space>
 					</Col>
 				</Row>
@@ -143,21 +145,21 @@ class Clientes extends React.Component{
 						onFinish={this.onFinish}					
 					>
 						<Card>
-							<FormCliente pais_id={this.state.pais_id}/>
+							<FormLocation pais_id={this.state.pais_id}/>
 						</Card>
 					</Form>
 					<Row>
 						<Col span={24}>
 							<Popconfirm
                                 placement="topRight"
-                                title="Do you want to delete this customer?"
-                                onConfirm={() => axios.delete('/clientes',{
+                                title="Do you want to delete this location?"
+                                onConfirm={() => axios.delete('/locations',{
                                 	params: {
-                                		cliente_id: this.props.params?.cliente_id
+                                		location_id: this.props.params?.location_id
                                 	}
                                 }).then(() => {
-                                    this.props.navigate("/customer/customers")
-                                    message.success('Customer deleted')
+                                    this.props.navigate("/customer/locations")
+                                    message.success('Location deleted')
                                 }).catch(error => console.log(error))}
                                 okText="Si"
                                 cancelText="No"
@@ -165,7 +167,7 @@ class Clientes extends React.Component{
                                 <Button
                                    danger
                                 >
-                                	Delete Customer
+                                	Delete Location
                                 </Button>
                             </Popconfirm>
 						</Col>
@@ -179,5 +181,5 @@ export default function(props){
 
 	const navigate = useNavigate()
 
-	return <Clientes {...props} navigate={navigate} params={useParams()}/>
+	return <EditLocation {...props} navigate={navigate} params={useParams()}/>
 }
