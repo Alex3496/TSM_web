@@ -38,6 +38,7 @@ const App = () => {
 						key: "trailers",
 						icon: <UserOutlined/>,
 						label: "Trailes",
+						onClick: () => { navigate('/customer/trailers') }
 					},
 					{
 						key: "drivers",

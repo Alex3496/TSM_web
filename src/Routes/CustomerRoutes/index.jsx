@@ -9,6 +9,7 @@ import Header from "../../Components/Customer/Header/header";
 
 //Rutas
 import RouterClientes from "./RouterClientes";
+import RouterTrailers from "./RouterTrailers";
 import RouterLocations from "./RouterLocations";
 
 
@@ -43,6 +44,7 @@ class CustomerRoutes extends React.Component {
 		                <Routes>
 		                 	<Route path='/customers/*'         element={<RouterClientes/>} />
 		                 	<Route path='/locations/*'         element={<RouterLocations/>} />
+		                 	<Route path='/trailers/*'         element={<RouterTrailers/>} />
 		                </Routes>
 		             </Content>
 				</Layout>
