@@ -44,6 +44,7 @@ const App = () => {
 						key: "drivers",
 						icon: <UserOutlined/>,
 						label: "Drivers",
+						onClick: () => { navigate('/customer/drivers') }
 					}
 				]}
 			/>
