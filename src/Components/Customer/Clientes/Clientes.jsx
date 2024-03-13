@@ -30,6 +30,7 @@ class Clientes extends React.Component{
 	}
 
 	componentDidMount(){
+		axios.defaults.headers.common['Authorization'] = sessionStorage.getItem('token');
 		this.getClientes()
 	}
 

@@ -30,6 +30,7 @@ class Drivers extends React.Component{
 	}
 
 	componentDidMount(){
+		axios.defaults.headers.common['Authorization'] = sessionStorage.getItem('token');
 		this.getDrivers()
 	}
 

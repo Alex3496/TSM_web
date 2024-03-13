@@ -1,8 +1,10 @@
 import React from 'react'
 import { Route, Routes } from "react-router-dom";
 import { Layout } from 'antd';
+
 // Components
 import Login from '../../Components/Auth/login';
+import Register from '../../Components/Auth/register';
 
 /**
  * 
@@ -16,6 +18,7 @@ function PublicRoutes() {
     <Layout className="layout-login">
       <Routes>
         <Route path='/' element={<Login />} />
+        <Route path='/register' element={<Register />} />
       </Routes>
     </Layout>
   )

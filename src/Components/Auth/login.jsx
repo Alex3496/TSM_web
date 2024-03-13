@@ -1,12 +1,19 @@
-import { useState } from 'react'
-import { Row, Col, Form, Input, Button, Checkbox, Spin, message } from "antd";
+import React, { useState, useContext } from 'react'
+import { Row, Col, Form, Input, Button, Checkbox, Spin, message, Typography } from "antd";
 
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+//Componentes
+import { User, SetUser } from '../../Hooks/logged';
+
+const { Link } = Typography;
+
 function App() {
 
 	const navigate = useNavigate()
+	let user = useContext(User);
+	let setUser = React.useContext(SetUser)
 
 	/**
 	 * @function onFinish
@@ -16,7 +23,7 @@ function App() {
 		axios.post('/login',{
 			...values
 		}).then(({data, headers}) => {
-			console.log(data)
+			setUser(data.user)
 			sessionStorage.setItem('token', headers.authorization);
 			axios.defaults.headers.common['Authorization'] =  headers.authorization;
 			navigate('/customer')
@@ -85,6 +92,7 @@ function App() {
 								Submit
 							</Button>
 						</Form.Item>
+						<Link onClick={()=>navigate('/register')}>Create an account</Link>
 					</Form>
 				</Col>
 			</Row>

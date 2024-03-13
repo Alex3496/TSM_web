@@ -1,7 +1,10 @@
 import React from 'react';
-import { useNavigate } from "react-router-dom";
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
+import { FaTruck } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { FaLocationDot } from "react-icons/fa6";
+import { PiSteeringWheelBold } from "react-icons/pi";
+import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
 
 const { Sider } = Layout;
 
@@ -30,19 +33,19 @@ const App = () => {
 					},
 					{
 						key: "locations",
-						icon: <UserOutlined/>,
+						icon: <FaLocationDot/>,
 						label: "Locations",
 						onClick: () => { navigate('/customer/locations') }
 					},
 					{
 						key: "trailers",
-						icon: <UserOutlined/>,
+						icon: <FaTruck/>,
 						label: "Trailes",
 						onClick: () => { navigate('/customer/trailers') }
 					},
 					{
 						key: "drivers",
-						icon: <UserOutlined/>,
+						icon: <PiSteeringWheelBold/>,
 						label: "Drivers",
 						onClick: () => { navigate('/customer/drivers') }
 					}
