@@ -63,7 +63,7 @@ class Drivers extends React.Component{
 			...values
 		}).then(response => {
 			message.success("Drivers created")
-			this.props.navigate("/customer/customers")
+			this.props.navigate("/customer/drivers")
 		}).catch(error => {
 			console.log(error)
 			message.error("Error creating driver")

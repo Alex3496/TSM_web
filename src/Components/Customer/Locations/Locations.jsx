@@ -79,7 +79,7 @@ class Locations extends React.Component{
     			dataIndex: 'Address',
     			key: 'address',
     			render: (text, record) => (
-			     	<Text>{record.direccion1} {record.direccion2}, {record.ciudad}, {record.estado_id.nombre}, {record.pais_id.codigo_3}, {record.codigo_postal}</Text>
+			     	<Text>{record.direccion1} {record.direccion2}, {record.ciudad}, {record?.estado_id?.nombre}, {record?.pais_id?.codigo_3}, {record?.codigo_postal}</Text>
 			    ),
   			},
   			{
