@@ -35,7 +35,7 @@ class App extends Component {
 	    }).catch((error) => {
 	      console.log('error', error.response)
 	    })
-	  }
+	}
 
 	setUser = (user) => this.setState({ user })
 
