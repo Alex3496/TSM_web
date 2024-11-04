@@ -26,29 +26,11 @@ const App = () => {
 				}}
 				items={[
 					{
-						key: "customers",
+						key: "accounts",
 						icon: <UserOutlined/>,
-						label: "Customers",
-						onClick: () => { navigate('/customer/customers') }
+						label: "Cuentas",
+						onClick: () => { navigate('/customer/accounts') }
 					},
-					{
-						key: "locations",
-						icon: <FaLocationDot/>,
-						label: "Locations",
-						onClick: () => { navigate('/customer/locations') }
-					},
-					{
-						key: "trailers",
-						icon: <FaTruck/>,
-						label: "Trailes",
-						onClick: () => { navigate('/customer/trailers') }
-					},
-					{
-						key: "drivers",
-						icon: <PiSteeringWheelBold/>,
-						label: "Drivers",
-						onClick: () => { navigate('/customer/drivers') }
-					}
 				]}
 			/>
 		</Sider>

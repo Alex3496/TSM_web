@@ -8,7 +8,6 @@ import Sidebar from "../../Components/Customer/Sidebar";
 import Header from "../../Components/Customer/Header/header";
 
 //Rutas
-import RouterAccounts from "./RouterAccounts";
 
 
 
@@ -18,10 +17,10 @@ const { Content } = Layout
 /**
  * 
  * @export
- * @function CustomerRoutes
- * @description Contiene la base principal ed la vista princial del cliente del sistema
+ * @function AdminRoutes
+ * @description Contiene la base principal de la vista princial del Admin del sistema
  */
-class CustomerRoutes extends React.Component {
+class AdminRoutes extends React.Component {
 
 	constructor(props) {
 		super(props)
@@ -41,7 +40,7 @@ class CustomerRoutes extends React.Component {
 					<Sidebar/>
 					<Content style={{ minHeight: 'calc(100vh - 100px)' }}>
 		                <Routes>
-		                 	<Route path='/accounts/*'         element={<RouterAccounts/>} />
+		                 	
 		                </Routes>
 		             </Content>
 				</Layout>
@@ -55,5 +54,5 @@ export default function (props) {
 
 	const navigate = useNavigate()
 
-	return <CustomerRoutes {...props} navigate={navigate} />
+	return <AdminRoutes {...props} navigate={navigate} />
 }
